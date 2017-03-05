@@ -106,7 +106,7 @@ public:
     				}
     			}else{
     				find_replace_in_left_part(key_point->left, replace_point,replace_parent_point);
-                    if(replace_parent_point->val==key){
+                        if(replace_parent_point->val==key){
     					if(replace_point->left==NULL){
     						key_point->val=replace_point->val;
     						key_point->left=NULL;
