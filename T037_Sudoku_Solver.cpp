@@ -10,7 +10,7 @@ public:
 		for(int j=0;j<9;j++)
 			if(board[i][j]=='.')
 				num_vacancies++;
-	cout<<solve(board,num_vacancies)<<endl;
+	solve(board,num_vacancies);
 				
 
 }
