@@ -8,15 +8,15 @@ class Solution {
 public:
     int countNumbersWithUniqueDigits(int n) {
         if(n>10)
-			return countNumbersWithUniqueDigits(10);
-		if(n==0)
-			return 1;
-		int current=9;
-		int result=10;
-		for(int i=1;i<n;i++){
-			current=current*(9-(i+1)+2);
-			result+=current;
-		}
-		return result;
+		return countNumbersWithUniqueDigits(10);
+	if(n==0)
+		return 1;
+	int current=9;
+	int result=10;
+	for(int i=1;i<n;i++){
+		current=current*(9-(i+1)+2);
+		result+=current;
+	}
+	return result;
     }
 };
