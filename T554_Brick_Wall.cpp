@@ -24,21 +24,11 @@ Note:
 The width sum of bricks in different rows are the same and won't exceed INT_MAX.
 The number of bricks in each row is in range [1,10,000]. The height of wall is in range [1,10,000]. Total number of 
 bricks of the wall won't exceed 20,000.*/
-
-
-
-class Solution {
-public:
-    int leastBricks(vector<vector<int>>& wall) {
+int leastBricks(vector<vector<int>>& wall) {
         int height=wall.size();
-		if(height==0)
+		if(height==0||wall[0].size()==0)
 			return 0;
-		int width=0;
-		for(int i=0;i<wall[0].size();i++)
-			width+=wall[0][i];
-		set<int> heap;
-		map<int,int> map_pos2num;
-
+		map<int,int> map_pos2num;//count number of edge for each horizontal position
 		for(int row=0;row<wall.size();row++){
 			int pos=0;
 			for(int ind=0;ind<wall[row].size()-1;ind++){
@@ -46,15 +36,13 @@ public:
 				auto iter=map_pos2num.find(pos);
 				if(iter==map_pos2num.end()){
 					map_pos2num[pos]=1;
-					heap.insert(pos);
 				}else
 					map_pos2num[pos]++;
 			}
 		}
 		int result=height;
-		for(auto iter=heap.begin();iter!=heap.end();iter++)
-			if(result>height-map_pos2num[*iter])
-				result=height-map_pos2num[*iter];
+		for(auto iter=map_pos2num.begin();iter!=map_pos2num.end();iter++)
+			if(result>height-(*iter).second)
+				result=height-(*iter).second;
 		return result;
-    }
-};
+}
