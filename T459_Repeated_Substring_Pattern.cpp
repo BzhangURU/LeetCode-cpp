@@ -16,3 +16,24 @@ Input: "abcabcabcabc"
 Output: True
 
 Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)*/
+class Solution {
+public:
+    bool repeatedSubstringPattern(string s) {
+        int size=s.size();
+
+    	for(int i=size/2;i>=1;i--){
+    		if(size%i==0){
+    			int times=size/i;
+    			int k=1;
+    			for(;k<times;k++){
+    				if(s.substr(0,i)!=s.substr(k*i,i))
+    					break;
+    			}
+    			if(k==times)
+    				return true;
+    		}
+    	}
+    
+    	return false;
+    }
+};
